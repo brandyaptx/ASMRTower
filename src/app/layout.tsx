@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { siteConfig } from "@/data/site";
 import "./globals.css";
 
@@ -38,9 +39,12 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const gaId = process.env.NEXT_PUBLIC_GA_ID || siteConfig.ga4MeasurementId;
+
   return (
     <html lang="en">
       <body>
+        <GoogleAnalytics gaId={gaId} />
         <Header />
         {children}
         <Footer />

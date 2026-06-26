@@ -4,6 +4,7 @@ export const siteConfig = {
   title: "ASMR Tower Guide & Tools 2026",
   description:
     "Verified ASMR Tower Roblox data, codes status, stage help, and a gamepass budget calculator.",
+  ga4MeasurementId: "G-SDD1JC9XKM",
   checkedDate: "2026-06-26",
   nav: [
     { href: "/", label: "Home" },

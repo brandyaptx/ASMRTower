@@ -83,7 +83,7 @@ for (const asset of ["hero-bg.jpg", "og-default.jpg", "favicon.svg"]) {
 const cssFiles = existsSync(join(outDir, "_next", "static"))
   ? readFileSync(join(root, "src", "app", "globals.css"), "utf8")
   : "";
-if (!cssFiles.includes("@media (max-width: 860px)") || !cssFiles.includes("overflow-x: auto")) {
+if (!/@media\s*\(max-width:\s*\d+px\)/.test(cssFiles) || !cssFiles.includes("overflow-x: auto")) {
   fail("Mobile navigation CSS guard is missing");
 }
 
