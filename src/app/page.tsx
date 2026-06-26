@@ -2,7 +2,16 @@ import Link from "next/link";
 import Image from "next/image";
 import JsonLd from "@/components/JsonLd";
 import Status from "@/components/Status";
-import { ArrowIcon } from "@/components/Icons";
+import {
+  ArrowIcon,
+  SparkleIcon,
+  CodeIcon,
+  CalcIcon,
+  TierIcon,
+  BookIcon,
+  UpdateIcon,
+  SourceIcon,
+} from "@/components/Icons";
 import {
   codesStatus,
   gameProfile,
@@ -18,31 +27,37 @@ const cards = [
     href: "/codes/",
     title: "Codes",
     text: "No working public codes are verified right now. Track active, expired, and needs-check status without fake rewards.",
+    Icon: CodeIcon,
   },
   {
     href: "/calculator/",
     title: "Calculator",
     text: "Select gamepasses and calculate Robux budget by movement, comfort, economy, and access goals.",
+    Icon: CalcIcon,
   },
   {
     href: "/tier-list/",
     title: "Tier List",
     text: "Utility-first ranking for ASMR Tower gamepasses, with prices and source confidence visible.",
+    Icon: TierIcon,
   },
   {
     href: "/wiki/",
     title: "Wiki",
     text: "Official description, gameplay tags, stage help, and same-name game disambiguation in one place.",
+    Icon: BookIcon,
   },
   {
     href: "/updates/",
     title: "Updates",
     text: "Latest verified Roblox update timestamp plus what still needs in-game verification.",
+    Icon: UpdateIcon,
   },
   {
     href: "/sources/",
     title: "Sources",
     text: "Every claim is tied to Roblox API, Rolimon's, or third-party codes guides with status labels.",
+    Icon: SourceIcon,
   },
 ];
 
@@ -68,10 +83,17 @@ export default function Home() {
 
       <section className="shell hero">
         <div className="hero-copy">
-          <h1>ASMR Tower Guide & Tools</h1>
+          <div className="hero-badges">
+            <span className="chip brand"><SparkleIcon /> Verified data</span>
+            <span className="chip">Updated {siteConfig.checkedDate}</span>
+            <span className="chip">Roblox · {gameProfile.developer}</span>
+          </div>
+          <h1>
+            ASMR Tower <span className="accent">Guide &amp; Tools</span>
+          </h1>
           <p>
-            Verified Roblox data, codes status, stage help, and a gamepass budget calculator
-            for {gameProfile.displayName} by {gameProfile.developer}.
+            Verified Roblox data, codes status, stage help, and a gamepass budget
+            calculator for {gameProfile.displayName} by {gameProfile.developer}.
           </p>
           <div className="hero-actions">
             <Link className="button primary" href="/calculator/">
@@ -114,10 +136,10 @@ export default function Home() {
       <section className="shell section tight">
         <div className="section-head">
           <div>
-            <h2>P0 page network</h2>
+            <h2>Explore the Wiki</h2>
             <p>
-              Built around {totalKeywords} classified keyword targets, with codes, tier list,
-              wiki, updates, calculator, and sources as the only launch pages.
+              Built around {totalKeywords} classified keyword targets, with codes, tier
+              list, wiki, updates, calculator, and sources as the launch pages.
             </p>
           </div>
           <Status value="Verified" />
@@ -126,6 +148,7 @@ export default function Home() {
           {cards.map((card) => (
             <Link className="card" href={card.href} key={card.href}>
               <div>
+                <div className="card-icon"><card.Icon /></div>
                 <h3>{card.title}</h3>
                 <p>{card.text}</p>
               </div>

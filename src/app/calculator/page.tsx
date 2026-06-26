@@ -39,6 +39,7 @@ export default function CalculatorPage() {
         ]}
       />
       <section className="page-title">
+        <div className="crumbs"><Link href="/">Home</Link> / Calculator</div>
         <h1>ASMR Tower Gamepass Calculator</h1>
         <p>
           Pick ASMR Tower gamepasses, compare Robux totals, and see whether your plan is
@@ -92,11 +93,10 @@ export default function CalculatorPage() {
 
       <section className="section tight">
         <div className="note">
-          Calculator data should be refreshed whenever Rolimon&apos;s prices, Roblox gamepasses,
-          or the live ASMR Tower shop changes. Review the{" "}
-          <Link href="/sources/">
-            sources page <ArrowIcon />
-          </Link>
+          Calculator data should be refreshed whenever Rolimon&apos;s prices, Roblox
+          gamepasses, or the live ASMR Tower shop changes. Review the{" "}
+          <Link href="/sources/">sources page <ArrowIcon /></Link> for the full origin
+          list, and the <Link href="/updates/">updates page</Link> for the latest checks.
         </div>
       </section>
     </main>

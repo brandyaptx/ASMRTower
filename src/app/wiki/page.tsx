@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import Status from "@/components/Status";
 import { gameProfile, nameCollision } from "@/data/site";
@@ -22,6 +23,7 @@ export default function WikiPage() {
         ])}
       />
       <section className="page-title">
+        <div className="crumbs"><Link href="/">Home</Link> / Wiki</div>
         <h1>ASMR Tower Wiki</h1>
         <p>{gameProfile.description}</p>
       </section>
@@ -38,38 +40,14 @@ export default function WikiPage() {
           <div className="table-wrap">
             <table>
               <tbody>
-                <tr>
-                  <th>Place ID</th>
-                  <td>{gameProfile.placeId}</td>
-                </tr>
-                <tr>
-                  <th>Universe ID</th>
-                  <td>{gameProfile.universeId}</td>
-                </tr>
-                <tr>
-                  <th>Developer</th>
-                  <td>{gameProfile.developer}</td>
-                </tr>
-                <tr>
-                  <th>Genre</th>
-                  <td>{gameProfile.genre}</td>
-                </tr>
-                <tr>
-                  <th>Max players</th>
-                  <td>{gameProfile.maxPlayers}</td>
-                </tr>
-                <tr>
-                  <th>Visits</th>
-                  <td>{formatNumber(gameProfile.currentSnapshot.visits)}</td>
-                </tr>
-                <tr>
-                  <th>Favorites</th>
-                  <td>{formatNumber(gameProfile.currentSnapshot.favorites)}</td>
-                </tr>
-                <tr>
-                  <th>Updated</th>
-                  <td>{gameProfile.lastUpdated}</td>
-                </tr>
+                <tr><th>Place ID</th><td>{gameProfile.placeId}</td></tr>
+                <tr><th>Universe ID</th><td>{gameProfile.universeId}</td></tr>
+                <tr><th>Developer</th><td>{gameProfile.developer}</td></tr>
+                <tr><th>Genre</th><td>{gameProfile.genre}</td></tr>
+                <tr><th>Max players</th><td>{gameProfile.maxPlayers}</td></tr>
+                <tr><th>Visits</th><td>{formatNumber(gameProfile.currentSnapshot.visits)}</td></tr>
+                <tr><th>Favorites</th><td>{formatNumber(gameProfile.currentSnapshot.favorites)}</td></tr>
+                <tr><th>Updated</th><td>{gameProfile.lastUpdated}</td></tr>
               </tbody>
             </table>
           </div>
@@ -90,12 +68,9 @@ export default function WikiPage() {
             <p>These terms come from the official Roblox description and drive the wiki page coverage.</p>
           </div>
         </div>
-        <div className="cards-grid">
+        <div className="tag-cloud">
           {gameProfile.officialTags.map((tag) => (
-            <div className="metric" key={tag}>
-              <strong style={{ fontSize: 18 }}>{tag}</strong>
-              <span>Official Roblox description tag</span>
-            </div>
+            <span className="tag" key={tag}>#{tag}</span>
           ))}
         </div>
       </section>
