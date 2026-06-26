@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/tier-list/",
 });
 
-const tierNotes = {
+const tierNotes: Record<"S" | "A" | "B" | "C", string> = {
   S: "Best movement or route-control value if your budget allows it.",
   A: "Strong practical utility for repeated tower attempts.",
   B: "Useful in specific goals, but less universally important.",
@@ -30,6 +30,7 @@ export default function TierListPage() {
         ])}
       />
       <section className="page-title">
+        <div className="crumbs"><Link href="/">Home</Link> / Tier List</div>
         <h1>ASMR Tower Tier List</h1>
         <p>
           A utility-first ranking of ASMR Tower gamepasses. Prices are sourced from
@@ -56,7 +57,7 @@ export default function TierListPage() {
                     <span className={`tier ${item.tier.toLowerCase()}`}>{item.tier}</span>
                   </td>
                   <td>
-                    <strong style={{ color: "var(--text)" }}>{item.name}</strong>
+                    <strong>{item.name}</strong>
                     <div style={{ marginTop: 6 }}>{item.note}</div>
                   </td>
                   <td>{formatRobux(item.price)}</td>
@@ -73,10 +74,12 @@ export default function TierListPage() {
 
       <section className="section tight">
         <div className="cards-grid">
-          {Object.entries(tierNotes).map(([tier, note]) => (
+          {(Object.entries(tierNotes) as ["S" | "A" | "B" | "C", string][]).map(([tier, note]) => (
             <article className="card" key={tier}>
-              <span className={`tier ${tier.toLowerCase()}`}>{tier}</span>
-              <h3>{tier} tier</h3>
+              <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                <span className={`tier ${tier.toLowerCase()}`}>{tier}</span>
+                <h3 style={{ margin: 0 }}>{tier} tier</h3>
+              </div>
               <p>{note}</p>
             </article>
           ))}
@@ -85,9 +88,9 @@ export default function TierListPage() {
 
       <section className="section tight">
         <div className="note">
-          This is not a power ranking of stages or players. It is a buyer&apos;s utility list for
-          public gamepasses. Use the <Link href="/calculator/">calculator</Link> to test
-          your Robux budget before spending.
+          This is not a power ranking of stages or players. It is a buyer&apos;s utility list
+          for public gamepasses. Use the <Link href="/calculator/">calculator</Link> to
+          test your Robux budget before spending.
         </div>
       </section>
     </main>
