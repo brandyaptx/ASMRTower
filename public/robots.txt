@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://asmrtower.wiki/sitemap.xml
+Sitemap: https://www.asmrtower.wiki/sitemap.xml

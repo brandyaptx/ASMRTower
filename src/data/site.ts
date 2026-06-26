@@ -1,5 +1,5 @@
 export const siteConfig = {
-  domain: "https://asmrtower.wiki",
+  domain: "https://www.asmrtower.wiki",
   name: "ASMR Tower Wiki",
   title: "ASMR Tower Guide & Tools 2026",
   description:

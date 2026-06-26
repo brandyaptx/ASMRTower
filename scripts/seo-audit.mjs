@@ -3,7 +3,7 @@ import { join } from "node:path";
 
 const root = process.cwd();
 const outDir = join(root, "out");
-const site = "https://asmrtower.wiki";
+const site = "https://www.asmrtower.wiki";
 const routes = ["/", "/codes/", "/tier-list/", "/wiki/", "/updates/", "/calculator/", "/sources/"];
 const labels = ["Codes", "Tier List", "Wiki", "Updates", "Calculator", "Sources"];
 const failures = [];
